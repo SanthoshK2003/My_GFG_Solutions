@@ -47,17 +47,7 @@ struct Node {
 class Solution {
   public:
     // Function to find the length of a loop in the linked list.
-    int findLength(Node* slow,Node* fast)
-    {
-        int cnt=1;
-        fast=slow->next;
-        while(fast!=slow)
-        {
-            cnt++;
-            fast=fast->next;
-        }
-        return cnt;
-    }
+
     int countNodesinLoop(Node *head) {
         // Code here
         Node* slow=head;
@@ -68,7 +58,14 @@ class Solution {
             fast=fast->next->next;
             if(slow==fast)
             {
-                return findLength(slow,fast);
+                 int cnt=1;
+                fast=slow->next;
+                while(fast!=slow)
+                {
+                    cnt++;
+                    fast=fast->next;
+                }
+                return cnt;
             }
         }
         return 0;
